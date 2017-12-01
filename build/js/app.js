@@ -22,13 +22,7 @@ var Doctor = exports.Doctor = function () {
     value: function medicalIssue(query, key) {}
   }, {
     key: "doctorSearch",
-    value: function doctorSearch(query, key) {
-      $.get("https://api.betterdoctor.com/2016-03-01/doctors?name=" + query + "&location=45.5231%2C-122.6765%2C100&user_location=45.5231%2C122.6765&skip=0&limit=10&user_key=" + key).then(function (response) {
-        return response;
-      }).fail(function (error) {
-        return error;
-      });
-    }
+    value: function doctorSearch(query, key) {}
   }]);
 
   return Doctor;
@@ -44,7 +38,19 @@ $(document).ready(function () {
   $("#health-search").click(function () {
     var query = $("#health-problem").val();
     $.get("https://api.betterdoctor.com/2016-03-01/doctors?query=" + query + "&location=45.5231%2C-122.6765%2C100&user_location=45.5231%2C122.6765&skip=0&limit=10&user_key=" + apiKey).then(function (response) {
-      $("#output").append("<li>Name: " + response.data[0].profile.first_name + " " + response.data[0].profile.last_name);
+      for (var i = 0; i < response.data.length; i++) {
+        $("#output").append("<li>Name: " + response.data[i].profile.first_name + " " + response.data[i].profile.last_name);
+      }
+    }).fail(function (error) {
+      console.log(error);
+    });
+  });
+  $("#doctor-search").click(function () {
+    var query = $("#doctor-name").val();
+    $.get("https://api.betterdoctor.com/2016-03-01/doctors?name=" + query + "&location=45.5231%2C-122.6765%2C100&user_location=45.5231%2C122.6765&skip=0&limit=10&user_key=" + apiKey).then(function (response) {
+      for (var i = 0; i < response.data.length; i++) {
+        $("#output").append("<li>Name: " + response.data[i].profile.first_name + " " + response.data[i].profile.last_name);
+      }
     }).fail(function (error) {
       console.log(error);
     });
