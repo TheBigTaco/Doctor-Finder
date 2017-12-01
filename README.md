@@ -1,8 +1,8 @@
-# Doctor
+# Doctor Finder
 ##### by Adam Titus
 
 ### Description
-
+A basic app that uses the BetterDoctor API to help a user find a doctor that's good for them, and display the related information.
 
 ### Installation Instructions
 * Clone to desktop
@@ -18,7 +18,7 @@
 * Working browser with internet connection
 
 ### Known Bugs
-
+* No currently known bugs
 
 ### Contact Me
 You can reach me at adamtitus76@gmail.com or connect with me on [linkedin](www.linkedin.com/in/adam-titus-06740b149).
